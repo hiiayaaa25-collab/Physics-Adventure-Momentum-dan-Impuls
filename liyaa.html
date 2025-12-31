@@ -695,8 +695,8 @@
                             { id: 'ans-p1-magnitude', label: 'Momentum total |p|', unit: 'kg·m/s', correctValue: 500, tolerance: 0.5 },
                             { id: 'ans-p1-angle', label: 'Arah (deg dari timur, ccw)', unit: '°', correctValue: 143.13, tolerance: 0.5 }
                         ],
-                        feedback: { correct: "Betul — gunakan komponen vektor dan arctan2 untuk sudut.", wrong: "Coba lagi — hitung p_x = m·v_x dan p_y = m·v_y lalu gabungkan." },
-                        explanation: "<strong>p</strong>_x = -400 kg·m/s (barat), <strong>p</strong>_y = +300 kg·m/s (utara). |<strong>p</strong>| = sqrt(400^2 + 300^2) = 500 kg·m/s. sudut = arctan2(300,-400) ≈ 143.13° (dari timur, ccw)."
+                        feedback: { correct: "Betul — gunakan komponen vektor dan arctan2 untuk sudut.", wrong: "Coba lagi — hitung p<sub>x</sub> = m·v<sub>x</sub> dan p<sub>y</sub> = m·v<sub>y</sub> lalu gabungkan." },
+                        explanation: "<strong>p</strong><sub>x</sub> = -400 kg·m/s (barat), <strong>p</strong><sub>y</sub> = +300 kg·m/s (utara). |<strong>p</strong>| = sqrt(400^2 + 300^2) = 500 kg·m/s. sudut = arctan2(300,-400) ≈ 143.13° (dari timur, ccw)."
                     } 
                 },
 
@@ -726,8 +726,8 @@
                             { id: 'ans-force3', label: 'Gaya rata-rata (N)', unit: 'N', correctValue: -1.125, tolerance: 0.01 },
                             { id: 'ans-acc3', label: 'Percepatan rata-rata (m/s²)', unit: 'm/s²', correctValue: -7.5, tolerance: 0.01 }
                         ],
-                        feedback: { correct: "Benar — gunakan Δp = m(v_f - v_i) dan F_avg = Δp/Δt.", wrong: "Coba ulang: Hitung Δv lalu Δp = m·Δv, lalu bagi dengan Δt untuk F_avg." },
-                        explanation: "m = 0.15 kg; Δv = -9 - 6 = -15 m/s; <strong>I</strong> = 0.15 * -15 = -2.25 N·s; <strong>F</strong>_avg = -2.25 / 2 = -1.125 N; a_avg = -15 / 2 = -7.5 m/s²."
+                        feedback: { correct: "Benar — gunakan Δp = m(v_f - v_i) dan F<sub>avg</sub> = Δp/Δt.", wrong: "Coba ulang: Hitung Δv lalu Δp = m·Δv, lalu bagi dengan Δt untuk F<sub>avg</sub>." },
+                        explanation: "m = 0.15 kg; Δv = -9 - 6 = -15 m/s; <strong>I</strong> = 0.15 * -15 = -2.25 N·s; <strong>F</strong><sub>avg</sub> = -2.25 / 2 = -1.125 N; a<sub>avg</sub> = -15 / 2 = -7.5 m/s²."
                     } 
                 },
 
@@ -738,8 +738,8 @@
                     sim: {}, 
                     options: { 
                         input: { correctValue: 0.4, tolerance: 0.01 }, 
-                        feedback: { correct: "Benar — gunakan kekekalan momentum (m_peluru·v_peluru + m_senapan·v_senapan = 0).", wrong: "Ingat: peluru dan senapan memiliki momentum berlawanan sehingga m_senapan·v_senapan = - m_peluru·v_peluru." }, 
-                        explanation: "v_senapan = - (m_peluru * v_peluru) / m_senapan = - (0.002 * 400)/2 = -0.4 m/s (arah berlawanan peluru)." 
+                        feedback: { correct: "Benar — gunakan kekekalan momentum (m<sub>peluru</sub>·v<sub>peluru</sub> + m<sub>senapan</sub>·v<sub>senapan</sub> = 0).", wrong: "Ingat: peluru dan senapan memiliki momentum berlawanan sehingga m<sub>senapan</sub>·v<sub>senapan</sub> = - m<sub>peluru</sub>·v<sub>peluru</sub>." }, 
+                        explanation: "v<sub>senapan</sub> = - (m<sub>peluru</sub> * v<sub>peluru</sub>) / m<sub>senapan</sub> = - (0.002 * 400)/2 = -0.4 m/s (arah berlawanan peluru)." 
                     } 
                 },
 
@@ -757,8 +757,8 @@
                     question: "Sebuah benda jatuh bebas dari ketinggian 80 m di atas tanah. Jika tumbukan yang terjadi dengan tanah adalah lenting sebagian (e = 0.2), kecepatan pantul benda setelah tumbukan adalah (m/s)?",
                     options: {
                         input: { correctValue: 7.92, tolerance: 0.05, unit: 'm/s' },
-                        feedback: { correct: 'Benar — v_rebound = e × v_impact dan v_impact = √(2gh).', wrong: 'Coba lagi — hitung v_impact = √(2gh) lalu kalikan dengan e.' },
-                        explanation: 'v_impact = √(2·g·h) ≈ √(2·9.8·80) ≈ 39.6 m/s; v_rebound = 0.2 × 39.6 ≈ 7.92 m/s'
+                        feedback: { correct: 'Benar — v<sub>rebound</sub> = e × v<sub>impact</sub> dan v<sub>impact</sub> = √(2gh).', wrong: 'Coba lagi — hitung v<sub>impact</sub> = √(2gh) lalu kalikan dengan e.' },
+                        explanation: 'v<sub>impact</sub> = √(2·g·h) ≈ √(2·9.8·80) ≈ 39.6 m/s; v<sub>rebound</sub> = 0.2 × 39.6 ≈ 7.92 m/s'
                     }
                 },
 
@@ -766,14 +766,14 @@
                 {
                     id: 7, x: 6200, type: 'calc', visual: 'mountain',
                     question: "Tumbukan Lenting Sebagian\nSebuah bola basket jatuh dari ketinggian 6,25 m lalu memantul kembali hingga ketinggian 4,5 m. Tentukan tinggi pantulan bola basket berikutnya (m)!",
-                    options: { input: { correctValue: 3.24, tolerance: 0.05, unit: 'm' }, feedback: { correct: 'Benar — h_next = e² × h_current', wrong: 'Ingat: e² = h2/h1; h3 = e² × h2' }, explanation: 'h2/h1 = 4.5/6.25 = 0.72 -> h3 = 0.72 × 4.5 = 3.24 m' }
+                    options: { input: { correctValue: 3.24, tolerance: 0.05, unit: 'm' }, feedback: { correct: 'Benar — h<sub>next</sub> = e² × h<sub>current</sub>', wrong: 'Ingat: e² = h<sub>2</sub>/h<sub>1</sub>; h<sub>3</sub> = e² × h<sub>2</sub>' }, explanation: 'h<sub>2</sub>/h<sub>1</sub> = 4.5/6.25 = 0.72 -> h<sub>3</sub> = 0.72 × 4.5 = 3.24 m' }
                 },
 
                 // LEVEL 8: TUMBUKAN LENTING SEMPURNA (Dua benda 10 kg & 6 kg)
                 {
                     id: 8, x: 6800, type: 'calc-multi', visual: 'fire',
                     question: "Tumbukan Lenting Sempurna\nTerdapat dua benda yang memiliki massa 10 kg dan 6 kg. Keduanya bergerak pada bidang datar yang licin, sementara kecepatannya adalah 4 m/s dan 8 m/s. Arah kedua benda berlawanan. Jika terjadi tumbukan lenting sempurna, maka berapakah kecepatan masing-masing benda setelah tumbukan?",
-                    options: { inputs: [ { id: 'ans-v1-8', label: "Kecepatan Akhir Benda 1 (v1')", unit: "m/s", correctValue: -5, tolerance: 0.1 }, { id: 'ans-v2-8', label: "Kecepatan Akhir Benda 2 (v2')", unit: "m/s", correctValue: 7, tolerance: 0.1 } ], feedback: { correct: "Sempurna!", wrong: "Gunakan rumus tumbukan lenting sempurna untuk menghitung v1' dan v2'" } }
+                    options: { inputs: [ { id: 'ans-v1-8', label: "Kecepatan Akhir Benda 1 (v<sub>1</sub><sup>'</sup>)", unit: "m/s", correctValue: -5, tolerance: 0.1 }, { id: 'ans-v2-8', label: "Kecepatan Akhir Benda 2 (v<sub>2</sub><sup>'</sup>)", unit: "m/s", correctValue: 7, tolerance: 0.1 } ], feedback: { correct: "Sempurna!", wrong: "Gunakan rumus tumbukan lenting sempurna untuk menghitung v<sub>1</sub><sup>'</sup> dan v<sub>2</sub><sup>'</sup>" } }
                 },
 
                 // LEVEL 9: TUMBUKAN LENTING TIDAK SEMPURNA (GAMBAR - SIMPAN UNTUK PENILAIAN GURU)
