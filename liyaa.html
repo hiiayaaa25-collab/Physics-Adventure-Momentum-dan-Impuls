@@ -603,6 +603,10 @@
                         <span class="text-2xl mt-[-2px]">🏆</span>
                         <div><strong>Skor:</strong> Kumpulkan poin sebanyak-banyaknya untuk masuk Leaderboard!</div>
                     </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-2xl mt-[-2px]">🎉</span>
+                        <div><strong>Bonus Finish:</strong> Dapatkan <strong class="text-yellow-600">(+50 Poin)</strong> bonus saat menyelesaikan semua tantangan!</div>
+                    </li>
                 </ul>
 
                 <button onclick="startGame()" class="btn-3d bg-green-500 text-white font-black py-4 px-12 rounded-xl text-2xl w-full uppercase border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] animate-pulse">
@@ -2552,6 +2556,10 @@
                     </li>
                  `;
              });
+
+             // Bonus +50 poin saat menyelesaikan permainan
+             state.score += 50;
+             document.getElementById('score-display').innerText = state.score;
 
              showScreen('screen-finish-message');
              toggleBGM(false); // Pastikan BGM mati di layar finish
