@@ -695,7 +695,7 @@
                             { id: 'ans-p1-magnitude', label: 'Momentum total |p|', unit: 'kg·m/s', correctValue: 500, tolerance: 0.5 },
                             { id: 'ans-p1-angle', label: 'Arah (°) dihitung dari Timur (0°) lalu diputar berlawanan arah jarum jam', unit: '°', correctValue: 143.13, tolerance: 0.5 }
                         ],
-                        feedback: { correct: "Betul — gunakan komponen vektor dan arctan2 untuk sudut.", wrong: "Coba lagi — hitung p<sub>x</sub> = m·v<sub>x</sub> dan p<sub>y</sub> = m·v<sub>y</sub> lalu gabungkan." },
+                        feedback: { correct: "Betul — gunakan komponen vektor dan arctan2 untuk sudut.", wrong: { magnitude: "Coba lagi — hitung |p| = sqrt(p<sub>x</sub>² + p<sub>y</sub>²).", angle: "Coba lagi — hitung p<sub>x</sub> = m·v<sub>x</sub> dan p<sub>y</sub> = m·v<sub>y</sub> lalu gabungkan.", both: "Coba lagi — hitung p<sub>x</sub> = m·v<sub>x</sub> dan p<sub>y</sub> = m·v<sub>y</sub> lalu gabungkan, kemudian |p| = sqrt(p<sub>x</sub>² + p<sub>y</sub>²)." } },
                         explanation: "<strong>p</strong><sub>x</sub> = -400 kg·m/s (barat), <strong>p</strong><sub>y</sub> = +300 kg·m/s (utara). |<strong>p</strong>| = sqrt(400^2 + 300^2) = 500 kg·m/s. sudut = arctan2(300,-400) ≈ 143.13° (dari Timur, berlawanan arah jarum jam)."
                     } 
                 },
@@ -726,7 +726,7 @@
                             { id: 'ans-force3', label: 'Gaya rata-rata (N)', unit: 'N', correctValue: -1.125, tolerance: 0.01 },
                             { id: 'ans-acc3', label: 'Percepatan rata-rata (m/s²)', unit: 'm/s²', correctValue: -7.5, tolerance: 0.01 }
                         ],
-                        feedback: { correct: "Benar — gunakan Δp = m(v_f - v_i) dan F<sub>avg</sub> = Δp/Δt.", wrong: "Coba ulang: Hitung Δv lalu Δp = m·Δv, lalu bagi dengan Δt untuk F<sub>avg</sub>." },
+                        feedback: { correct: "Benar — gunakan Δp = m(v_f - v_i) dan F<sub>avg</sub> = Δp/Δt.", wrong: { impulse: "Coba lagi — hitung impuls I = m·Δv.", force: "Coba lagi — hitung gaya rata-rata F<sub>avg</sub> = I / Δt.", acc: "Coba lagi — hitung percepatan a = Δv / Δt.", multiple: "Coba ulang: Hitung Δv lalu Δp = m·Δv, lalu bagi dengan Δt untuk F<sub>avg</sub> dan a." } },
                         explanation: "m = 0.15 kg; Δv = -9 - 6 = -15 m/s; <strong>I</strong> = 0.15 * -15 = -2.25 N·s; <strong>F</strong><sub>avg</sub> = -2.25 / 2 = -1.125 N; a<sub>avg</sub> = -15 / 2 = -7.5 m/s²."
                     } 
                 },
@@ -2117,13 +2117,23 @@
                 let allCorrect = true;
                 const parts = [];
                 const keys = [];
+                const wrongKeys = [];
                 if (cp.options && Array.isArray(cp.options.inputs)) {
                     cp.options.inputs.forEach(inp => {
                         const el = document.getElementById(inp.id);
                         const val = el ? parseFloat(el.value) : NaN;
                         parts.push(`${inp.label}=${isNaN(val)?'?':val}${inp.unit?inp.unit:''}`);
                         keys.push(`${(inp.correctValue!==undefined)?inp.correctValue:'?'}${inp.unit?inp.unit:''}`);
-                        if (isNaN(val) || Math.abs(val - inp.correctValue) > (inp.tolerance || 0)) allCorrect = false;
+                        const isWrong = isNaN(val) || Math.abs(val - inp.correctValue) > (inp.tolerance || 0);
+                        if (isWrong) {
+                            allCorrect = false;
+                            // Map id to key
+                            if (inp.id.includes('magnitude')) wrongKeys.push('magnitude');
+                            else if (inp.id.includes('angle')) wrongKeys.push('angle');
+                            else if (inp.id.includes('impulse')) wrongKeys.push('impulse');
+                            else if (inp.id.includes('force')) wrongKeys.push('force');
+                            else if (inp.id.includes('acc')) wrongKeys.push('acc');
+                        }
                     });
                     userAnswerDisplay = parts.join(' | ');
                     correctAnswerDisplay = keys.join(' | ');
@@ -2131,7 +2141,22 @@
                 // special-case legacy ID 9 behavior remains fallback
                 if (cp.id === 9 && allCorrect) { feedbackText = cp.options.feedback.correct; }
                 if (allCorrect) { correct = true; feedbackText = cp.options.feedback.correct; }
-                else { correct = false; feedbackText = cp.options.feedback.wrong; }
+                else { 
+                    correct = false; 
+                    if (cp.options.feedback.wrong) {
+                        if (typeof cp.options.feedback.wrong === 'object') {
+                            if (wrongKeys.length === 1) {
+                                feedbackText = cp.options.feedback.wrong[wrongKeys[0]];
+                            } else {
+                                feedbackText = cp.options.feedback.wrong.multiple || cp.options.feedback.wrong.both || 'Coba lagi — periksa semua bagian.';
+                            }
+                        } else {
+                            feedbackText = cp.options.feedback.wrong;
+                        }
+                    } else {
+                        feedbackText = 'Coba lagi.';
+                    }
+                }
             }
             
             // --- NEW: LOG RESULT LENGKAP ---
