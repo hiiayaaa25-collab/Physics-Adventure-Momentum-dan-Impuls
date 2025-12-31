@@ -597,7 +597,7 @@
                     </li>
                     <li class="flex items-start gap-3">
                         <span class="text-2xl mt-[-2px]">❌</span>
-                        <div><strong class="text-red-600">Jawaban Salah:</strong> Poin akan berkurang <strong class="text-red-600">(-5 Poin)</strong>. Tapi tenang, kamu bisa coba lagi!</div>
+                        <div><strong class="text-red-600">Jawaban Salah:</strong> Poin akan berkurang <strong class="text-red-600">(-5 Poin)</strong>. Tapi tenang, kamu bisa coba lagi! Ada 3 kali kesempatan untuk mengisi setiap tantangan.</div>
                     </li>
                     <li class="flex items-start gap-3">
                         <span class="text-2xl mt-[-2px]">🏆</span>
@@ -2227,7 +2227,7 @@
                     document.getElementById('score-display').innerText = state.score;
                     setTimeout(() => {
                         document.getElementById('quiz-submit-btn').disabled = false;
-                        fb.innerHTML = `Tenang, kamu bisa coba lagi! Ada 3 kali kesempatan untuk mengisi. Kesempatan tersisa: ${3 - state.wrongStreak}. (Petunjuk: ${feedbackText})`; 
+                        fb.innerHTML = `Coba lagi! (Petunjuk: ${feedbackText})`; 
                         fb.className = "text-center font-black mt-2 h-auto text-yellow-600 text-sm";
                     }, 2000);
                 }
