@@ -2227,7 +2227,7 @@
                     document.getElementById('score-display').innerText = state.score;
                     setTimeout(() => {
                         document.getElementById('quiz-submit-btn').disabled = false;
-                        fb.innerHTML = `Coba lagi! Kesempatan tersisa: ${3 - state.wrongStreak}. (Petunjuk: ${feedbackText})`; 
+                        fb.innerHTML = `Tenang, kamu bisa coba lagi! Ada 3 kali kesempatan untuk mengisi. Kesempatan tersisa: ${3 - state.wrongStreak}. (Petunjuk: ${feedbackText})`; 
                         fb.className = "text-center font-black mt-2 h-auto text-yellow-600 text-sm";
                     }, 2000);
                 }
