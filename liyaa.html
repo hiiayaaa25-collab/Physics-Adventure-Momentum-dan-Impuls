@@ -688,15 +688,15 @@
                 // LEVEL 1: HITUNGAN MOMENTUM DASAR (p = mv) - PALING MUDAH
                 { 
                     id: 1, x: 1000, type: 'calc-multi', visual: 'river', 
-                    question: "Sebuah benda mula-mula bergerak ke utara dengan kecepatan 6 m/s, lalu berbelok ke barat dengan kecepatan 8 m/s. Massa benda tersebut adalah 50 kg. Tentukan:\na. Nilai momentum total\nb. Arah momentum total (dalam derajat dari arah timur, 0° = timur, searah putaran positif).",
+                    question: "Sebuah benda mula-mula bergerak ke utara dengan kecepatan 6 m/s, lalu berbelok ke barat dengan kecepatan 8 m/s. Massa benda tersebut adalah 50 kg. Tentukan:\na. Nilai momentum total\nb. Arah momentum total (dalam derajat dari arah timur, 0° = timur, berlawanan arah jarum jam).",
                     sim: {},
                     options: { 
                         inputs: [
                             { id: 'ans-p1-magnitude', label: 'Momentum total |p|', unit: 'kg·m/s', correctValue: 500, tolerance: 0.5 },
-                            { id: 'ans-p1-angle', label: 'Arah (deg dari timur, ccw)', unit: '°', correctValue: 143.13, tolerance: 0.5 }
+                            { id: 'ans-p1-angle', label: 'Arah (°) dihitung dari Timur (0°) lalu diputar berlawanan arah jarum jam', unit: '°', correctValue: 143.13, tolerance: 0.5 }
                         ],
                         feedback: { correct: "Betul — gunakan komponen vektor dan arctan2 untuk sudut.", wrong: "Coba lagi — hitung p<sub>x</sub> = m·v<sub>x</sub> dan p<sub>y</sub> = m·v<sub>y</sub> lalu gabungkan." },
-                        explanation: "<strong>p</strong><sub>x</sub> = -400 kg·m/s (barat), <strong>p</strong><sub>y</sub> = +300 kg·m/s (utara). |<strong>p</strong>| = sqrt(400^2 + 300^2) = 500 kg·m/s. sudut = arctan2(300,-400) ≈ 143.13° (dari timur, ccw)."
+                        explanation: "<strong>p</strong><sub>x</sub> = -400 kg·m/s (barat), <strong>p</strong><sub>y</sub> = +300 kg·m/s (utara). |<strong>p</strong>| = sqrt(400^2 + 300^2) = 500 kg·m/s. sudut = arctan2(300,-400) ≈ 143.13° (dari Timur, berlawanan arah jarum jam)."
                     } 
                 },
 
@@ -710,7 +710,7 @@
                     },
                     options: { 
                         input: { correctValue: 8/3, tolerance: 0.05, unit: 'N.s' },
-                        feedback: { correct: "Betul — impuls = luas area di bawah kurva antara 3–5 s (≈ 2.67 N·s).", wrong: "Coba lagi — hitung luas area di bawah kurva antara t=3 dan t=5 s (hasil ≈ 2.67 N·s)." }, 
+                        feedback: { correct: "Betul — impuls = luas area di bawah kurva antara 3–5 s.", wrong: "Coba lagi — hitung luas area di bawah kurva antara t=3 dan t=5 s." }, 
                         explanation: "Impuls = integral <strong>F</strong> dt; untuk kurva ini luasnya sama dengan 8/3 N·s ≈ 2.67 N·s. Anda dapat memasukkan 2.67 atau pecahan 8/3."
                     } 
                 },
